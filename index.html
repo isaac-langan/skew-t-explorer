@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skew-T Explorer · Start here</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body class="start-page">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Skew-T Explorer home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8"/><path class="g" d="M8 26 13 17 11 12 16 6"/><path class="r" d="M20 26 17 18 22 13 25 6"/></svg>
+      <span>Skew-T Explorer</span>
+    </a>
+    <nav class="tabs" aria-label="Pages">
+      <a href="index.html" aria-current="page">Start</a>
+      <a href="build.html">Learn</a>
+      <a href="explore.html">Explore</a>
+      <a href="practice.html">Practice</a>
+      <a href="test.html">Test</a>
+    </nav>
+    <button id="theme" type="button"></button>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>How to read a Skew-T log-P</h1>
+        <p class="lead">A Skew-T is a chart of the air above one place, from the ground to high in the sky.</p>
+        <p>Weather balloons measure temperature, moisture and wind as they rise. A Skew-T puts those measurements in one picture, which helps people judge things like whether clouds or thunderstorms could form.</p>
+        <p>No experience needed.</p>
+        <a class="cta" href="build.html">Start learning</a>
+      </div>
+      <figure class="hero-chart">
+        <svg id="herochart" viewBox="0 0 820 760" role="img" aria-label="Example Skew-T showing temperature in red and dewpoint in green"></svg>
+        <figcaption><span class="swatch temp"></span>Temperature <span class="swatch dew"></span>Dewpoint · made-up teaching example</figcaption>
+      </figure>
+    </section>
+    <ol class="path">
+      <li><a href="build.html"><span class="num">1</span><strong>Learn</strong><span>Build a Skew-T one layer at a time.</span></a></li>
+      <li><a href="explore.html"><span class="num">2</span><strong>Explore</strong><span>Hover over lines and change the air.</span></a></li>
+      <li><a href="practice.html"><span class="num">3</span><strong>Practice</strong><span>Identify chart features and plot data, with help.</span></a></li>
+      <li><a href="test.html"><span class="num">4</span><strong>Test</strong><span>Check what you know, all in one go.</span></a></li>
+    </ol>
+  </main>
+  <script src="js/thermo.js"></script>
+  <script src="js/soundings.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/start.js"></script>
+</body>
+</html>
