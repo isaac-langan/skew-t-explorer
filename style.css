@@ -278,7 +278,7 @@ button.primary { background: var(--brand); border-color: var(--brand); color: #f
 /* The chart comes first, on its own row. Below it, one narrow column of cards: results or the key,
    then the sounding data, each easy to read on its own. */
 .explore-page .layout { grid-template-columns: minmax(0, 1fr); }
-.explore-page .layout > figure { width: 100%; max-width: 900px; margin: 0 auto; }
+.explore-page .layout > figure { width: 100%; max-width: 1060px; margin: 0 auto; padding: 4px; }
 .explore-page aside { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 640px; margin: 0 auto; padding: 0; background: none; border: 0; box-shadow: none; }
 .explore-page :is(#basickey, #parcelpanel, .data) { padding: 18px 22px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
 .explore-page aside :is(#basickey, #parcelpanel, .data) h2 { margin: 0 0 12px; font-size: 1.3rem; line-height: 1.3; }
@@ -370,10 +370,10 @@ button.primary { background: var(--brand); border-color: var(--brand); color: #f
 #datatable input:focus { border-color: var(--brand); }
 #datatable input:focus-visible { outline-offset: 0; }
 
-/* On wider screens the whole chart, down to the temperature labels, fits in the window.
-   app.js measures --above: the space over the chart plus its panel padding. Very short windows scroll instead. */
+/* On wider screens the chart is as tall as the window, so it is as big as it can be while still
+   showing all at once: scroll just past the controls to see the whole of it. */
 @media (min-width: 801px) {
-  .explore-page figure svg { height: max(400px, calc(100vh - var(--above, 280px))); height: max(400px, calc(100svh - var(--above, 280px))); }
+  .explore-page figure svg { height: max(480px, calc(100vh - 24px)); height: max(480px, calc(100svh - 24px)); }
   .explore-page .axis { font-size: 14px; }
 }
 

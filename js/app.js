@@ -95,16 +95,6 @@
     readout();
   }
 
-  // Tells the stylesheet how much is above the chart, so the whole chart can fit in the window.
-  // That height changes with the window width and the sounding's description.
-  function fit() {
-    const above = Math.round(svg.getBoundingClientRect().top + window.scrollY) + 20;
-    svg.style.setProperty('--above', above + 'px');
-  }
-  window.addEventListener('resize', fit);
-  // Watching the blocks above the chart catches every change in their height, whatever causes it.
-  const above = new ResizeObserver(fit);
-  for (const block of document.querySelectorAll('.controls, .hint')) above.observe(block);
   // Escape closes the tooltip.
   window.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
 
