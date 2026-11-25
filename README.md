@@ -4,7 +4,7 @@ An interactive, educational Skew-T log-P diagram that runs entirely in the brows
 
 - Sounding levels every 50 mb from 1000 to 100 mb
 - Hover or tap a line to see its name, value and meaning
-- A data table of pressure, temperature and dewpoint, linked to the chart; type in it to change values without dragging
+- A data table of pressure, temperature and dewpoint below the chart, linked to it; type in it to change values without dragging
 - On small screens, Explore, Practice and Test have a button that zooms in on the chart
 - Drag temperature and dewpoint dots; parcel path, CAPE, CIN, LCL, LFC and EL update
 - "Guide to the lines" with a drawn sample of each line; in the Full chart view each line has a Learn more with its theory and LaTeX equations. The displayed equations come only from Wallace and Hobbs, *Atmospheric Science: An Introductory Survey*, 2nd ed. (2006), with equation and page numbers; lessons say in plain words where the calculations differ. The CAPE lesson has a table of guide values with its sources. The CIN lesson's sources are listed in a comment in js/guide.js. KaTeX from jsDelivr typesets them, which needs an internet connection; plain-text equations are shown without it

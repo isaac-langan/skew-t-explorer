@@ -46,7 +46,7 @@
       </div>
       <p id="about"></p>
     </section>
-    <p class="hint">Hover or tap a line to learn about it. Drag a dot, or type in the data table, to change the air.</p>
+    <p class="hint">Hover or tap a line to learn about it. Drag a dot, or type in the data table below the chart, to change the air.</p>
     <div class="layout">
       <figure>
         <button class="zoom" type="button" aria-pressed="false">Zoom in on chart</button>
@@ -78,7 +78,13 @@
           <h2>Surface-based parcel</h2>
           <div id="readout"></div>
           <p id="nolfc" hidden><strong>Why no CIN?</strong> This lifted parcel never gets meaningfully warmer than the air around it, so there is no LFC and no CAPE. This chart only gives a CIN value when there is an LFC, so it shows no CIN value or blue shading. That does not mean the air can rise easily.</p>
-          <p class="note">CAPE, CIN, LFC and EL use virtual temperature, which allows for moisture. The shading lies between the two dotted virtual temperature lines. There can be more than one red layer, each with its own LFC. Only the highest EL is labeled. CAPE adds up all the red, and CIN adds up all the blue, from the surface to the highest EL. Layers of 1 J/kg or less don't get an LFC or EL. Learn, Practice and Test leave out this correction to stay introductory.</p>
+          <h3>How to read these numbers</h3>
+          <ul class="reading-notes">
+            <li><strong>CAPE</strong> adds up all the red, and <strong>CIN</strong> all the blue, from the surface to the highest EL.</li>
+            <li>There can be more than one red layer, each with its own LFC. Only the highest EL is labeled. Layers of 1 J/kg or less don't get an LFC or EL.</li>
+            <li>CAPE, CIN, LFC and EL use <strong>virtual temperature</strong>, which allows for moisture. The shading lies between the two dotted lines.</li>
+            <li>Learn, Practice and Test leave out this correction to stay simple.</li>
+          </ul>
         </div>
         <p class="note">Heights are above the 1000 mb surface. The examples are made up for teaching, not observed data. Not for forecasting.</p>
       </aside>
