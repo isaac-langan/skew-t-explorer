@@ -58,8 +58,9 @@
       <aside>
         <section class="data">
           <h2>Sounding data</h2>
+          <p class="table-help">Click a number to change it.</p>
           <table id="datatable">
-            <thead><tr><th scope="col">Pressure<br>(mb)</th><th scope="col"><span class="swatch temp"></span><br>Temp (°C)</th><th scope="col"><span class="swatch dew"></span><br>Dewpoint (°C)</th></tr></thead>
+            <thead><tr><th scope="col">Pressure <span>mb</span></th><th scope="col" class="col-temp">Temp <span>°C</span></th><th scope="col" class="col-dew">Dewpoint <span>°C</span></th></tr></thead>
             <tbody></tbody>
           </table>
         </section>
@@ -75,7 +76,7 @@
         </div>
         <div id="parcelpanel" hidden>
           <h2>Surface-based parcel</h2>
-          <dl id="readout"></dl>
+          <div id="readout"></div>
           <p id="nolfc" hidden><strong>Why no CIN?</strong> This lifted parcel never gets meaningfully warmer than the air around it, so there is no LFC and no CAPE. This chart only gives a CIN value when there is an LFC, so it shows no CIN value or blue shading. That does not mean the air can rise easily.</p>
           <p class="note">CAPE, CIN, LFC and EL use virtual temperature, which allows for moisture. The shading lies between the two dotted virtual temperature lines. There can be more than one red layer, each with its own LFC. Only the highest EL is labeled. CAPE adds up all the red, and CIN adds up all the blue, from the surface to the highest EL. Layers of 1 J/kg or less don't get an LFC or EL. Learn, Practice and Test leave out this correction to stay introductory.</p>
         </div>

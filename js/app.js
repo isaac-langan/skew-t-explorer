@@ -150,22 +150,32 @@
     else table();
   });
 
+  // The parcel results, as two small tables: total energy, then the levels. CAPE and CIN are each
+  // one total, however many layers they come from.
   function readout() {
     const meters = p => Math.round(Thermo.interp(levels, 'z', p) / 10) * 10;
     levels.forEach((l, i) => { l.z = hgt[i]; });
-    const level = p => p && p >= PTOP ? `${Math.round(p)} mb, ${meters(p).toLocaleString()} m` : 'none';
-    const rows = [
-      ['CAPE', joules(par.cape)],
-      ['CIN', par.cin === null ? 'none (no LFC)' : `${Math.round(par.cin)} J/kg`],
-      ['LCL', level(par.lcl.p)],
-      // One LFC for each warmer layer, numbered from the ground up when there are several.
-      ...(par.layers.length ? par.layers : [{ lfc: null }]).flatMap((layer, i) => {
-        const n = par.layers.length > 1 ? ` ${i + 1}` : '';
-        return [['LFC' + n, level(layer.lfc)], ...(n ? [[`CAPE in layer ${i + 1}`, joules(layer.cape)]] : [])];
-      }),
-      ['EL', par.lfc && !par.el ? 'above 100 mb' : level(par.el)],
-    ];
-    $('readout').innerHTML = rows.map(r => `<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('');
+    // A level's pressure and height cells, or one cell of words when there is no such level.
+    const place = (p, missing = 'none') => (p && p >= PTOP
+      ? `<td>${Math.round(p)}</td><td>${meters(p).toLocaleString()}</td>`
+      : `<td colspan="2">${missing}</td>`);
+    const row = (name, cells) => `<tr><th scope="row">${name}</th>${cells}</tr>`;
+    const table = (caption, head, rows) => `<table><caption class="sr-only">${caption}</caption>` +
+      `<thead><tr>${head.map(h => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table>`;
+    const whole = v => Math.round(v).toLocaleString();
+    // One LFC for each warmer layer, numbered from the ground up when there are several.
+    const lfcs = (par.layers.length ? par.layers : [{ lfc: null }])
+      .map((layer, i) => row(par.layers.length > 1 ? `LFC ${i + 1}` : 'LFC', place(layer.lfc)));
+    $('readout').innerHTML =
+      table('Total CAPE and CIN', ['Energy', 'Total (J/kg)'], [
+        row('CAPE', `<td>${whole(par.cape)}</td>`),
+        row('CIN', `<td>${par.cin === null ? 'none (no LFC)' : whole(par.cin)}</td>`),
+      ]) +
+      table('Parcel levels', ['Level', 'Pressure (mb)', 'Height (m)'], [
+        row('LCL', place(par.lcl.p)),
+        ...lfcs,
+        row('EL', place(par.el, par.lfc && !par.el ? 'above 100 mb' : 'none')),
+      ]);
     $('nolfc').hidden = Boolean(par.lfc);
   }
 
@@ -228,7 +238,6 @@
     const kind = air > env ? 'cape' : 'cin', sign = air > env ? 1 : -1;
     const value = [
       `Total ${kind.toUpperCase()}: ${joules(kind === 'cape' ? par.cape : par.cin)}`,
-      `From the surface up to here: ${joules(Thermo.energy(par.path, levels[0].p, p, sign))}`,
       `At ${Math.round(p)} mb${heightText(p)}, the parcel's virtual temperature is ${f1(Math.abs(air - env))} °C ${sign > 0 ? 'warmer' : 'colder'} than the air's`,
     ].join('<br>');
     return { kind, value };
